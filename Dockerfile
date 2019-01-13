@@ -63,7 +63,6 @@ RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -r
 # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
 RUN apt-get update && apt-get install -y mysql-client postgresql postgresql-contrib sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-
 #PostgreSQL setup
 RUN su -c "psql -c \"CREATE ROLE ubuntu WITH LOGIN PASSWORD 'password' \"" postgres
 RUN su -c "psql -c \"ALTER ROLE ubuntu SUPERUSER \"" postgres
