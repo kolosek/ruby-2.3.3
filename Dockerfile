@@ -57,4 +57,7 @@ RUN apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 
 
 ENV RAILS_VERSION 4.2.5.1
 
+# sprockets version >= 4.0.0 don't work with ruby version <= 2.5.0 so a previous version needs to be installed manualy
+RUN gem install sprockets -v 3.7.2
+
 RUN gem install rails --version "$RAILS_VERSION"
