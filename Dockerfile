@@ -14,7 +14,8 @@ RUN \
     unzip \
     xvfb \
     libfontconfig \
-    wkhtmltopdf
+    wkhtmltopdf \
+    libicu-dev
 
 # Install yarn
 RUN \
