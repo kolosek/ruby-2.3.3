@@ -34,7 +34,6 @@ RUN \
   #apt-get update -yqqq && \
   #apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
   apt-get install -y /tmp/chrome.deb && \
-  rm /tmp/chrome.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
