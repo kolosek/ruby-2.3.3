@@ -29,11 +29,12 @@ RUN yarn install
 # Install Chrome
 RUN \
   #wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  wget http://dl.google.com/linux/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_73.0.3683.20-1_amd64.deb && \
+  wget -O /tmp/chrome.deb http://dl.google.com/linux/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_73.0.3683.20-1_amd64.deb && \
   #echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   #apt-get update -yqqq && \
   #apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
-  apt-get install -f ./google-chrome-unstable_73.0.3683.20-1_amd64.deb && \
+  apt-get install -y /tmp/chrome.deb && \
+  rm /tmp/chrome.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
