@@ -27,11 +27,12 @@ RUN \
 RUN yarn install
 
 # Install Chrome
+ARG CHROME_VERSION="73.0.3683"
 RUN \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   apt-get update -yqqq && \
-  apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
+  apt-get -qqy install ${CHROME_VERSION:-google-chrome-stable} \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
