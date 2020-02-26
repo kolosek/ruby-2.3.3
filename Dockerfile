@@ -36,7 +36,7 @@ RUN \
 
 # Install chromedriver
 RUN \
-  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip && \
+  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip && \
   unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
   rm /tmp/chromedriver.zip && \
   chmod ugo+rx /usr/bin/chromedriver
