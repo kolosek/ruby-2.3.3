@@ -27,7 +27,7 @@ RUN \
 RUN yarn install
 
 # Install Chrome
-ARG CHROME_VERSION="73.0.3683"
+ARG CHROME_VERSION="73.0.3683.103-1"
 RUN \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
