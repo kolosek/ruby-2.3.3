@@ -28,17 +28,15 @@ RUN yarn install
 
 # Install Chrome
 RUN \
-  #wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  wget -O /tmp/chrome.deb http://dl.google.com/linux/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_73.0.3683.20-1_amd64.deb && \
-  #echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-  #apt-get update -yqqq && \
-  #apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
-  apt-get install -y /tmp/chrome.deb && \
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
+  apt-get update -yqqq && \
+  apt-get install -y google-chrome-stable > /dev/null 2>&1 && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
 RUN \
-  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip && \
+  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip && \
   unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
   rm /tmp/chromedriver.zip && \
   chmod ugo+rx /usr/bin/chromedriver
