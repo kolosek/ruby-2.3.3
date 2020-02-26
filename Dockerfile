@@ -35,8 +35,10 @@ RUN \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
+RUN CHROME_VERSION=$(google-chrome --version | sed -r 's/[^0-9]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')
+RUN CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
 RUN \
-  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip && \
+  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
   unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
   rm /tmp/chromedriver.zip && \
   chmod ugo+rx /usr/bin/chromedriver
