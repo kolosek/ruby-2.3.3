@@ -28,14 +28,9 @@ RUN \
 RUN yarn install
 
 # Install Chrome
-#ARG CHROME_VERSION="75.0.3770.80"
-#RUN \
-  #wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  #echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-  #apt-get update -yqqq && \
-  #apt-get -qqy install ${CHROME_VERSION:-google-chrome-stable} && \
+RUN \
   wget -O /tmp/chrome.deb http://rethink.software/api/v2/connectedApps.requestObject?connectedAppsId=6590&itemsOriginalId=e095878a-3a17-409b-b45d-de87573538de&key=uploads%2Fnesha-z.%2Fdrive-personal-lHazsrI%2Fgoogle-chrome-stable_current_amd64.deb-hbUmoJO%2Fgoogle-chrome-stable_current_amd64.deb&download=1 && \
-  gdebi -y /tmp/chrome.deb
+  gdebi -y /tmp/chrome.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
 # Install chromedriver
