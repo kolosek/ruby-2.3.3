@@ -25,7 +25,8 @@ RUN \
     libnspr4 \
     libnss3 \
     libxss1 \
-    libxtst6
+    libxtst6 \
+    xdg-utils
 
 # Install yarn
 RUN \
