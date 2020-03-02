@@ -29,7 +29,7 @@ RUN yarn install
 
 # Install Chrome
 RUN \
-  wget -O "/tmp/chrome.deb" 'http://rethink.software/api/v2/connectedApps.requestObject?connectedAppsId=6590&itemsOriginalId=e095878a-3a17-409b-b45d-de87573538de&key=uploads%2Fnesha-z.%2Fdrive-personal-lHazsrI%2Fgoogle-chrome-stable_current_amd64.deb-hbUmoJO%2Fgoogle-chrome-stable_current_amd64.deb&download=1' && \
+  wget -O "/tmp/chrome.deb" 'https://publist-drives.s3.us-east-2.amazonaws.com/uploads/nesha-z./drive-personal-lHazsrI/google-chrome-stable_current_amd64.deb-hbUmoJO/google-chrome-stable_current_amd64.deb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVEBNDYUXJ76FUWXK%2F20200302%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200302T125512Z&X-Amz-Expires=432000&X-Amz-Signature=02b234ce1c07600f25e04216d34bca9262b4e45b8012d47684bbc144934a14ef&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3Bfilename%3D%22google-chrome-stable_current_amd64.deb%22' && \
   dpkg -i /tmp/chrome.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
