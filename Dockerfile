@@ -16,7 +16,16 @@ RUN \
     libfontconfig \
     wkhtmltopdf \
     libicu-dev \
-    gdebi-core
+    gdebi-core \
+    fonts-liberation \
+    libappindicator3-1 \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libgtk-3-0 \
+    libnspr4 \
+    libnss3 \
+    libxss1 \
+    libxtst6
 
 # Install yarn
 RUN \
