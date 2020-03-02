@@ -29,7 +29,7 @@ RUN yarn install
 
 # Install Chrome
 RUN \
-  wget -O http://rethink.software/api/v2/connectedApps.requestObject?connectedAppsId=6590&itemsOriginalId=e095878a-3a17-409b-b45d-de87573538de&key=uploads%2Fnesha-z.%2Fdrive-personal-lHazsrI%2Fgoogle-chrome-stable_current_amd64.deb-hbUmoJO%2Fgoogle-chrome-stable_current_amd64.deb&download=1 && \
+  wget http://rethink.software/api/v2/connectedApps.requestObject?connectedAppsId=6590&itemsOriginalId=e095878a-3a17-409b-b45d-de87573538de&key=uploads%2Fnesha-z.%2Fdrive-personal-lHazsrI%2Fgoogle-chrome-stable_current_amd64.deb-hbUmoJO%2Fgoogle-chrome-stable_current_amd64.deb&download=1 && \
   dpkg -i google-chrome-stable_current_amd64.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
