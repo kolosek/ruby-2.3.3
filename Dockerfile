@@ -45,7 +45,9 @@ RUN \
 
 # Install chromedriver
 RUN \
-  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip && \
+  CHROME_VERSION=$(google-chrome --version | sed -r 's/[^0-9]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/g') && \
+  CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION) && \
+  wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
   unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ && \
   rm /tmp/chromedriver.zip && \
   chmod ugo+rx /usr/bin/chromedriver
