@@ -39,7 +39,7 @@ RUN yarn install
 
 # Install Chrome
 RUN \
-  wget -O "./chrome.deb" 'https://publist-drives.s3.us-east-2.amazonaws.com/uploads/nesha-z./drive-personal-lHazsrI/google-chrome-stable_current_amd64-75.deb-wplbDQH/google-chrome-stable_current_amd64-75.deb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVEBNDYUXJ76FUWXK%2F20200305%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200305T103802Z&X-Amz-Expires=432000&X-Amz-Signature=e367bb12619bd74de8755c2dc867df7df0a8e669d13567a41085a61c6fd69f9d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3Bfilename%3D%22google-chrome-stable_current_amd64-75.deb%22' && \
+  wget -O "/tmp/chrome.deb" 'https://publist-drives.s3.us-east-2.amazonaws.com/uploads/nesha-z./drive-personal-lHazsrI/google-chrome-stable_current_amd64-75.deb-wplbDQH/google-chrome-stable_current_amd64-75.deb?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVEBNDYUXJ76FUWXK%2F20200305%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200305T103802Z&X-Amz-Expires=432000&X-Amz-Signature=e367bb12619bd74de8755c2dc867df7df0a8e669d13567a41085a61c6fd69f9d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3Bfilename%3D%22google-chrome-stable_current_amd64-75.deb%22' && \
   dpkg -i /tmp/chrome.deb && \
   sed -i 's/"$@"/--no-sandbox "$@"/g' /opt/google/chrome/google-chrome
 
